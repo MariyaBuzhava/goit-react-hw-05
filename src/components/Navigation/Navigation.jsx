@@ -1,12 +1,18 @@
 // import c from './Navigation.module.css'
 
 import { NavLink } from "react-router-dom";
+import HomePage from "../../pages/HomePage/HomePage";
+import MoviesPage from "../../pages/MoviesPage/MoviesPage";
 
 const Navigation = () => {
   return (
     <div>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/movies">Movies</NavLink>
+      <NavLink to="/">
+        <HomePage />
+      </NavLink>
+      <NavLink to="/movies">
+        <MoviesPage />
+      </NavLink>
     </div>
   );
 };
