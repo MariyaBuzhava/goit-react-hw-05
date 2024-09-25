@@ -1,0 +1,24 @@
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  display: flex;
+  padding: 20px;
+  background-color: pink;
+  gap: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.link {
+  color: black;
+  font-weight: bold;
+  &:hover {
+    color: hotpink;
+  }
+}
+
+.activeLink {
+  color: deeppink;
+}
