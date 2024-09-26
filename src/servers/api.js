@@ -18,3 +18,13 @@ export const fetchTrendingMovies = async () => {
   const response = await axios.get(url, options);
   return response.data.results;
 };
+
+export const fetchTrendingMoviesById = async (movieId) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}`,
+    options
+  );
+  console.log(response.data);
+
+  return response.data;
+};
