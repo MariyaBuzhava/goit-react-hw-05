@@ -1,8 +1,6 @@
 import c from "./Navigation.module.css";
 
 import { NavLink } from "react-router-dom";
-import HomePage from "../../pages/HomePage/HomePage";
-import MoviesPage from "../../pages/MoviesPage/MoviesPage";
 import clsx from "clsx";
 
 const Navigation = () => {
@@ -13,10 +11,10 @@ const Navigation = () => {
   return (
     <div className={c.wrapper}>
       <NavLink to="/" className={buildLinkClass}>
-        <HomePage />
+        Home
       </NavLink>
       <NavLink to="/movies" className={buildLinkClass}>
-        <MoviesPage />
+        Movies
       </NavLink>
     </div>
   );
