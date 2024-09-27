@@ -24,7 +24,23 @@ export const fetchTrendingMoviesById = async (movieId) => {
     `https://api.themoviedb.org/3/movie/${movieId}`,
     options
   );
-  console.log(response.data);
+  return response.data;
+};
 
+export const fetchCredits = async (movieId) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/credits`,
+    options
+  );
+  console.log(response.data);
+  return response.data;
+};
+
+export const fetchReviews = async (movieId) => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews`,
+    options
+  );
+  console.log(response.data);
   return response.data;
 };

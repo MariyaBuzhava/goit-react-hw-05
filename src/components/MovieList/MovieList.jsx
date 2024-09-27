@@ -1,4 +1,4 @@
-// import c from './MovieList.module.css'
+import c from "./MovieList.module.css";
 
 import { useEffect, useState } from "react";
 import { fetchTrendingMovies } from "../../servers/api";
@@ -15,13 +15,13 @@ const MovieList = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Trending movies</h2>
-      <ul>
+    <div className={c.trendingContainer}>
+      <h2 className={c.trendingTitle}>Trending Movies</h2>
+      <ul className={c.movieList}>
         {movies.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>
-              <p>{movie.title}</p>
+          <li key={movie.id} className={c.movieItem}>
+            <Link to={`/movies/${movie.id}`} className={c.movieLink}>
+              <p className={c.movieTitle}>{movie.title}</p>
             </Link>
           </li>
         ))}

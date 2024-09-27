@@ -1,0 +1,33 @@
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-color: #ffebee;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 20px;
+}
+
+.notFoundMessage {
+  font-size: 2rem;
+  color: #d5006d;
+  margin-bottom: 20px;
+}
+
+.homeLink {
+  font-size: 1.5rem;
+  color: #ff4081;
+  text-decoration: none;
+  border: 2px solid #ff4081;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.homeLink:hover {
+  background-color: #ff4081;
+  color: #fff;
+}

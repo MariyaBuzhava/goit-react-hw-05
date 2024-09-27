@@ -1,7 +1,7 @@
 import c from "./MovieDetailsPage.module.css";
 
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import { fetchTrendingMoviesById } from "../../servers/api";
 
 const MovieDetailsPage = () => {
@@ -34,7 +34,6 @@ const MovieDetailsPage = () => {
             />
           )}
         </div>
-
         <div className={c.poster}>
           {movie.poster_path && (
             <img
@@ -44,7 +43,6 @@ const MovieDetailsPage = () => {
             />
           )}
         </div>
-
         <div className={c.textContainer}>
           <h3>{movie.title}</h3>
           <p>
@@ -56,6 +54,22 @@ const MovieDetailsPage = () => {
           </p>
         </div>
       </div>
+      <hr />
+      <div className={c.additionalInfo}>
+        <h4 className={c.heading}>Additional information</h4>
+        <NavLink to="cast" className={c.navlink} activeClassName={c.activeLink}>
+          Cast
+        </NavLink>
+        <NavLink
+          to="reviews"
+          className={c.navlink}
+          activeClassName={c.activeLink}
+        >
+          Reviews
+        </NavLink>
+      </div>
+      <Outlet />
+      <hr />
     </>
   );
 };

@@ -1,0 +1,43 @@
+.wrapper {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+}
+
+.reviewItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-bottom: 2px solid #ffc0cb;
+  padding: 10px;
+}
+
+.leftColumn {
+  flex: 0 0 200px;
+  margin-right: 20px;
+}
+
+.rightColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.author {
+  font-weight: bold;
+  margin: 0;
+  color: #ff69b485;
+}
+
+.avatar {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 15px;
+}
+
+.content {
+  margin: 0;
+}

@@ -1,0 +1,38 @@
+.castList {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.castItem {
+  background-color: #fff0f5;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 150px;
+}
+
+.profileImage {
+  width: 100%;
+  border-radius: 10px;
+  height: auto;
+}
+
+.castInfo {
+  margin-top: 10px;
+}
+
+.castName {
+  font-size: 1.1rem;
+  color: #ff69b4;
+  margin: 0;
+}
+
+.castCharacter {
+  font-size: 0.9rem;
+  color: #333;
+}

@@ -1,0 +1,40 @@
+.trendingContainer {
+  margin: 0;
+  padding: 20px 0;
+  border-radius: 10px;
+}
+
+.trendingTitle {
+  font-size: 2rem;
+  color: #d5006d;
+  margin-bottom: 15px;
+  margin: 0;
+  text-align: center;
+}
+
+.movieList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.movieItem {
+  margin-bottom: 10px;
+}
+
+.movieLink {
+  text-decoration: none;
+  color: #ff4081;
+  transition: color 0.3s;
+}
+
+.movieLink:hover {
+  color: #d5006d;
+}
+
+.movieTitle {
+  font-size: 1.2rem;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
