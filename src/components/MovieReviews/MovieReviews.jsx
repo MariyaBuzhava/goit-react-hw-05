@@ -14,10 +14,11 @@ const MovieReviews = () => {
       console.log(data.results);
     };
     getData();
+    if (!movieId) return;
   }, [movieId]);
 
   if (!reviews.length) {
-    return <div>No reviews</div>;
+    return <div className={c.noReview}>No reviews</div>;
   }
 
   return (

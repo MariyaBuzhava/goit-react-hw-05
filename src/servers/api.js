@@ -44,3 +44,12 @@ export const fetchReviews = async (movieId) => {
   console.log(response.data);
   return response.data;
 };
+
+export const fetchSearchMovie = async () => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/search/movie`,
+    options
+  );
+  console.log(response.data);
+  return response.data;
+};

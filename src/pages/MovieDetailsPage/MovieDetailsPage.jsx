@@ -3,6 +3,7 @@ import c from "./MovieDetailsPage.module.css";
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import { fetchTrendingMoviesById } from "../../servers/api";
+import clsx from "clsx";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -19,6 +20,10 @@ const MovieDetailsPage = () => {
   if (!movie) {
     return <div>Movie not found</div>;
   }
+
+  const buildLinkClass = ({ isActive }) => {
+    return clsx(c.navlink, isActive && c.activeLink);
+  };
 
   return (
     <>
@@ -57,14 +62,10 @@ const MovieDetailsPage = () => {
       <hr />
       <div className={c.additionalInfo}>
         <h4 className={c.heading}>Additional information</h4>
-        <NavLink to="cast" className={c.navlink} activeClassName={c.activeLink}>
+        <NavLink to="cast" className={buildLinkClass}>
           Cast
         </NavLink>
-        <NavLink
-          to="reviews"
-          className={c.navlink}
-          activeClassName={c.activeLink}
-        >
+        <NavLink to="reviews" className={buildLinkClass}>
           Reviews
         </NavLink>
       </div>

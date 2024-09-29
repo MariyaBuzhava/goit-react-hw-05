@@ -36,3 +36,10 @@
   font-size: 0.9rem;
   color: #333;
 }
+.noCast {
+  margin: 20px;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #d5006d;
+  text-align: center;
+}

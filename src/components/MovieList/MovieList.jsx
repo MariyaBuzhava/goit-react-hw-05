@@ -15,8 +15,7 @@ const MovieList = () => {
   }, []);
 
   return (
-    <div className={c.trendingContainer}>
-      <h2 className={c.trendingTitle}>Trending Movies</h2>
+    <div className={c.container}>
       <ul className={c.movieList}>
         {movies.map((movie) => (
           <li key={movie.id} className={c.movieItem}>

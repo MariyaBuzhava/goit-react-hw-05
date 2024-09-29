@@ -1,14 +1,14 @@
 .homeContainer {
   margin: 20px;
-  padding: 20px;
+  padding: 25px;
   background-color: #fff0f5;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.homeTitle {
+.trendingTitle {
   font-size: 2rem;
-  color: #ff69b4;
+  color: #d5006d;
   margin: 0;
-  text-align: left;
+  text-align: center;
 }

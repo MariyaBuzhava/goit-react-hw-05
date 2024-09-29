@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 const MovieCast = () => {
   const { movieId } = useParams();
   const [casts, setCasts] = useState([]);
+
   useEffect(() => {
     const getData = async () => {
       const data = await fetchCredits(movieId);
@@ -14,23 +15,31 @@ const MovieCast = () => {
       console.log(data.cast);
     };
     getData();
+    if (!movieId) return;
   }, [movieId]);
 
   if (!casts.length) {
-    return <div>No cast data available</div>;
+    return <div className={c.noCast}>No cast data available</div>;
   }
+
+  const defaultActorImg =
+    "https://dummyimage.com/200x300/cdcdcd/000.jpg&text=No+Image";
+
   return (
     <div>
       <ul className={c.castList}>
         {casts.map((cast) => (
           <li key={cast.id} className={c.castItem}>
-            {cast.profile_path && (
-              <img
-                className={c.profileImage}
-                src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                alt={cast.name}
-              />
-            )}
+            <img
+              className={c.profileImage}
+              src={
+                cast.profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}`
+                  : defaultActorImg
+              }
+              alt={cast.name || "Actor"}
+              width={150}
+            />
             <div className={c.castInfo}>
               <h4 className={c.castName}>{cast.name}</h4>
               <p className={c.castCharacter}>Character: {cast.character}</p>
