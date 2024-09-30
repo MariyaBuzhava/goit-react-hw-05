@@ -93,3 +93,11 @@
   color: white;
   border-color: #ff69b4;
 }
+
+.noMovies {
+  margin-top: 20px;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  color: #ff69b4;
+}

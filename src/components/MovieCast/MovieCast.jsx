@@ -12,7 +12,6 @@ const MovieCast = () => {
     const getData = async () => {
       const data = await fetchCredits(movieId);
       setCasts(data.cast);
-      console.log(data.cast);
     };
     getData();
     if (!movieId) return;

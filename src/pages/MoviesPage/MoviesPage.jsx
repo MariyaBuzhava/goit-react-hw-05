@@ -29,7 +29,6 @@ const MoviesPage = () => {
       if (!query) return;
       const data = await fetchSearchMovie(query);
       setMovies(data.results || []);
-      console.log(data.results);
     };
     searchMovies();
   }, [query]);
@@ -41,7 +40,6 @@ const MoviesPage = () => {
       ),
     [query, movies]
   );
-  console.log(FilteredMovies);
 
   return (
     <div className={c.container}>

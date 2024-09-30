@@ -1,35 +1,45 @@
 import c from "./MovieDetailsPage.module.css";
 
-import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useParams } from "react-router-dom";
+import { Suspense, useEffect, useRef, useState } from "react";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { fetchTrendingMoviesById } from "../../servers/api";
 import clsx from "clsx";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const location = useLocation();
+  const backLink = useRef(location.state ?? "/movies");
+
   useEffect(() => {
     const getData = async () => {
       const data = await fetchTrendingMoviesById(movieId);
       setMovie(data);
-      console.log(data);
     };
     getData();
   }, [movieId]);
 
   if (!movie) {
-    return <div>Movie not found</div>;
+    return <div className={c.noMovies}>Movie not found</div>;
   }
 
   const buildLinkClass = ({ isActive }) => {
     return clsx(c.navlink, isActive && c.activeLink);
   };
-  const defaultImg =
+  const defaultImgP =
     "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
+  const defaultImgB =
+    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+backdrop";
 
   return (
     <>
-      <Link to="/" className={c.link}>
+      <Link to={backLink.current} className={c.link}>
         ← Go back
       </Link>
       <div className={c.container}>
@@ -38,7 +48,7 @@ const MovieDetailsPage = () => {
             src={
               movie.backdrop_path
                 ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
-                : defaultImg
+                : defaultImgB
             }
             width={1450}
             alt={movie.title}
@@ -50,7 +60,7 @@ const MovieDetailsPage = () => {
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                : defaultImg
+                : defaultImgP
             }
             width={400}
             alt={movie.title}
@@ -77,7 +87,15 @@ const MovieDetailsPage = () => {
           Reviews
         </NavLink>
       </div>
-      <Outlet />
+      <Suspense
+        fallback={
+          <div className="loader-container">
+            <div className="loader"></div>
+          </div>
+        }
+      >
+        <Outlet />
+      </Suspense>
       <hr />
     </>
   );

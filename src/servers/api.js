@@ -9,11 +9,6 @@ const options = {
   },
 };
 
-axios
-  .get(url, options)
-  .then((response) => console.log(response))
-  .catch((err) => console.error(err));
-
 export const fetchTrendingMovies = async () => {
   const response = await axios.get(url, options);
   return response.data.results;
@@ -32,7 +27,6 @@ export const fetchCredits = async (movieId) => {
     `https://api.themoviedb.org/3/movie/${movieId}/credits`,
     options
   );
-  console.log(response.data);
   return response.data;
 };
 
@@ -41,7 +35,6 @@ export const fetchReviews = async (movieId) => {
     `https://api.themoviedb.org/3/movie/${movieId}/reviews`,
     options
   );
-  console.log(response.data);
   return response.data;
 };
 
@@ -50,6 +43,5 @@ export const fetchSearchMovie = async (query) => {
     `https://api.themoviedb.org/3/search/movie?query=${query}`,
     { ...options, params: { query } }
   );
-  console.log(response.data);
   return response.data;
 };
