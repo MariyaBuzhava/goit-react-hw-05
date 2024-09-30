@@ -45,10 +45,10 @@ export const fetchReviews = async (movieId) => {
   return response.data;
 };
 
-export const fetchSearchMovie = async () => {
+export const fetchSearchMovie = async (query) => {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/search/movie`,
-    options
+    `https://api.themoviedb.org/3/search/movie?query=${query}`,
+    { ...options, params: { query } }
   );
   console.log(response.data);
   return response.data;

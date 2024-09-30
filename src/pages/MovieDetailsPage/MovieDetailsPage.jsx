@@ -24,6 +24,8 @@ const MovieDetailsPage = () => {
   const buildLinkClass = ({ isActive }) => {
     return clsx(c.navlink, isActive && c.activeLink);
   };
+  const defaultImg =
+    "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
 
   return (
     <>
@@ -32,21 +34,27 @@ const MovieDetailsPage = () => {
       </Link>
       <div className={c.container}>
         <div className={c.backdrop}>
-          {movie.backdrop_path && (
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-              alt={movie.title}
-            />
-          )}
+          <img
+            src={
+              movie.backdrop_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
+                : defaultImg
+            }
+            width={1450}
+            alt={movie.title}
+          />
         </div>
         <div className={c.poster}>
-          {movie.poster_path && (
-            <img
-              className={c.posterImage}
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-            />
-          )}
+          <img
+            className={c.posterImage}
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                : defaultImg
+            }
+            width={400}
+            alt={movie.title}
+          />
         </div>
         <div className={c.textContainer}>
           <h3>{movie.title}</h3>

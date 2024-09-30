@@ -4,31 +4,33 @@ import { Field, Form, Formik } from "formik";
 import { useEffect, useMemo, useState } from "react";
 import MovieList from "../../components/MovieList/MovieList.jsx";
 import { fetchSearchMovie } from "../../servers/api";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
-  const initialValues = {
-    query: "",
-  };
-
-  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
 
-  const handleSubmit = async (values) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") ?? "";
+  const initialValues = {
+    query: query || "",
+  };
+
+  const handleSubmit = (values) => {
     if (values.query.trim() === "") {
       return;
     }
-    setQuery(values.query);
-    console.log(values.query);
+
+    searchParams.set("query", values.query);
+    setSearchParams(searchParams);
   };
 
   useEffect(() => {
     const searchMovies = async () => {
       if (!query) return;
       const data = await fetchSearchMovie(query);
-      setMovies(data.results);
+      setMovies(data.results || []);
       console.log(data.results);
     };
-
     searchMovies();
   }, [query]);
 
@@ -39,6 +41,7 @@ const MoviesPage = () => {
       ),
     [query, movies]
   );
+  console.log(FilteredMovies);
 
   return (
     <div className={c.container}>
@@ -55,9 +58,9 @@ const MoviesPage = () => {
         </Form>
       </Formik>
       {FilteredMovies.length > 0 ? (
-        <MovieList movies={FilteredMovies} />
+        <MovieList movieSearch={FilteredMovies} />
       ) : (
-        query && <p className={c.noMovies}>No movies found</p>
+        query && <p className={c.noMovies}>No movies available.</p>
       )}
     </div>
   );

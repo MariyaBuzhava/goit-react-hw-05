@@ -30,3 +30,11 @@
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.noMovies {
+  margin-top: 20px;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  color: #d5006d;
+}

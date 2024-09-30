@@ -1,18 +1,13 @@
 import c from "./MovieList.module.css";
 
-import { useEffect, useState } from "react";
-import { fetchTrendingMovies } from "../../servers/api";
 import { Link } from "react-router-dom";
 
-const MovieList = () => {
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    const getAllMovies = async () => {
-      const data = await fetchTrendingMovies();
-      setMovies(data);
-    };
-    getAllMovies();
-  }, []);
+const MovieList = ({ movieSearch }) => {
+  const movies = movieSearch || [];
+
+  if (!movies || movies.length === 0) {
+    return <p className={c.noMovies}>No movies available.</p>;
+  }
 
   return (
     <div className={c.container}>
